@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "tutofast-frontend"
+    }
+  },
+  "defaultProject": "tutofast-frontend",
+  "cli": {
+    "analytics": "ec07f892-6f4c-4bcb-a236-4bea6ec5e56e"
+  }
 }
