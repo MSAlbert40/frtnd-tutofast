@@ -13,6 +13,7 @@ export class AppComponent {
   showAdminBoard = false;
   showTeacherBoard = false;
   showStudentBoard = false;
+  showAdminPlanAdministration = false;
   username: string;
 
   constructor(private tokenStorageService: TokenStorageService) { }
@@ -25,9 +26,9 @@ export class AppComponent {
       this.roles = user.roles;
 
       this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
+      this.showAdminPlanAdministration = this.roles.includes('ROLE_ADMIN');
       this.showTeacherBoard = this.roles.includes('ROLE_TEACHER');
       this.showStudentBoard = this.roles.includes('ROLE_STUDENT');
-
       this.username = user.username;
     }
   }

@@ -15,6 +15,9 @@ import { ProfileComponent } from './security/pages/profile/profile.component';
 import { StudentMainComponent } from './dashboard/pages/student/student-main/student-main.component';
 import { TeacherMainComponent } from './dashboard/pages/teacher/teacher-main/teacher-main.component';
 import { AdminMainComponent } from './dashboard/pages/admin/admin-main/admin-main.component';
+import { PlansAdministrationComponent } from './dashboard/pages/admin/plans-administration/plans-administration.component';
+
+
 
 @NgModule({
   declarations: [
@@ -25,7 +28,8 @@ import { AdminMainComponent } from './dashboard/pages/admin/admin-main/admin-mai
     ProfileComponent,
     StudentMainComponent,
     TeacherMainComponent,
-    AdminMainComponent
+    AdminMainComponent,
+    PlansAdministrationComponent
   ],
   imports: [
     BrowserModule,

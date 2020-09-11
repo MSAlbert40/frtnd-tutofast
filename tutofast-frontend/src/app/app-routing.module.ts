@@ -7,6 +7,7 @@ import {ProfileComponent} from './security/pages/profile/profile.component';
 import {TeacherMainComponent} from './dashboard/pages/teacher/teacher-main/teacher-main.component';
 import {StudentMainComponent} from './dashboard/pages/student/student-main/student-main.component';
 import {AdminMainComponent} from './dashboard/pages/admin/admin-main/admin-main.component';
+import {PlansAdministrationComponent} from './dashboard/pages/admin/plans-administration/plans-administration.component';
 
 const routes: Routes = [
   {path: 'Home', component: HomeComponent},
@@ -16,6 +17,7 @@ const routes: Routes = [
   {path: 'Dashboard-Teacher', component: TeacherMainComponent},
   {path: 'Dashboard-Student', component: StudentMainComponent},
   {path: 'Dashboard-Admin', component: AdminMainComponent},
+  {path: 'plans', component: PlansAdministrationComponent},
   {path: '', redirectTo: 'Home', pathMatch: 'full'}
 ];
 
