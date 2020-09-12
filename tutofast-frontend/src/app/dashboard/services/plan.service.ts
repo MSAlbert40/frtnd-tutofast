@@ -5,7 +5,6 @@ import {Plan} from '../models/plan';
 import {catchError, map} from 'rxjs/operators';
 import {PlanPage} from '../models/plan-page';
 
-
 const API_URL = 'http://localhost:8080/api/plans';
 
 @Injectable({
@@ -21,15 +20,14 @@ export class PlanService {
   }
   */
 
-  constructor(private http : HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-  getPlanPage(page:number): Observable<any>{
-
-    let url=API_URL+"?page="+page+"&size=7";
+  getPlanPage(page: number): Observable<any>{
+    let url = API_URL + "?page=" + page + "&size=7";
     return this.http.get<any>(url);
   }
 
-  private handleError<T> (operation = 'operation', result?: T) {
+  private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
 
       // TODO: send the error to remote logging infrastructure
@@ -42,6 +40,4 @@ export class PlanService {
       return of(result as T);
     };
   }
-
-
 }

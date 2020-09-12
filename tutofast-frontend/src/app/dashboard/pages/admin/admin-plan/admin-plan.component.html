@@ -16,13 +16,13 @@
   </tr>
   </thead>
   <tbody  *ngIf="planPage?.content">
-    <tr *ngFor="let plan of planPage.content">
-      <td>{{plan.id}}</td>
-      <td>{{plan.tittle}}</td>
-      <td>{{plan.hours}}</td>
-      <td>{{plan.price}}</td>
-      <td>{{plan.role}}</td>
-    </tr>
+  <tr *ngFor="let plan of planPage.content">
+    <td>{{plan.id}}</td>
+    <td>{{plan.tittle}}</td>
+    <td>{{plan.hours}}</td>
+    <td>{{plan.price}}</td>
+    <td>{{plan.role}}</td>
+  </tr>
   </tbody>
 </table>
 <nav aria-label="...">
@@ -30,5 +30,3 @@
     <li *ngFor="let page of ' '.repeat(planPage.totalPages).split(''), let i = index " (click)="onSelect(i)" [class.active]="i === selectedPage" class="page-item"><a class="page-link">{{i}}</a></li>
   </ul>
 </nav>
-
-

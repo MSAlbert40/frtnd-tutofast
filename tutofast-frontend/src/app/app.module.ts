@@ -15,7 +15,7 @@ import { ProfileComponent } from './security/pages/profile/profile.component';
 import { StudentMainComponent } from './dashboard/pages/student/student-main/student-main.component';
 import { TeacherMainComponent } from './dashboard/pages/teacher/teacher-main/teacher-main.component';
 import { AdminMainComponent } from './dashboard/pages/admin/admin-main/admin-main.component';
-import { PlansAdministrationComponent } from './dashboard/pages/admin/plans-administration/plans-administration.component';
+import { AdminPlanComponent } from './dashboard/pages/admin/admin-plan/admin-plan.component';
 
 
 
@@ -29,7 +29,7 @@ import { PlansAdministrationComponent } from './dashboard/pages/admin/plans-admi
     StudentMainComponent,
     TeacherMainComponent,
     AdminMainComponent,
-    PlansAdministrationComponent
+    AdminPlanComponent
   ],
   imports: [
     BrowserModule,
