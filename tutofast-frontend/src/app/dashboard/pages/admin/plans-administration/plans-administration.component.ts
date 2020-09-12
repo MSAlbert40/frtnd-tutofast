@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {PlanService} from '../../../services/plan.service';
+import {Plan} from '../../../models/plan';
+import {PlanPage} from '../../../models/plan-page';
+
 
 @Component({
   selector: 'app-plans-administration',
@@ -7,42 +10,33 @@ import {PlanService} from '../../../services/plan.service';
   styleUrls: ['./plans-administration.component.css']
 })
 export class PlansAdministrationComponent implements OnInit {
+  clients : Plan[];
+  planPage : any ;
+  selectedPage : number = 0;
 
-  constructor(private planService: PlanService) { }
-  private books: BookInterface;
-  pageActual: number = 1;
-  public myCounter: number = 0;
+  constructor(private planService : PlanService) {}
+
   ngOnInit() {
-    this.getListBooks();
+    //this.getClient();
+
+    this.getPlanPage(0);
+
+    //console.log(this.planPage.numberOfElements)
   }
 
-  getListBooks(): void {
-    this.dataApiService
-      .getAllBooks()
-      .subscribe((books: BookInterface) => (this.books = books));
+  getPlanPage (page:number): void {
+    this.planService.getPlanPage(page)
+      .subscribe(page => this.planPage = page)
+
   }
 
-  onDeleteBook(id: string): void {
-    if (confirm('Are you sure to delete?')) {
-      this.dataApiService.deleteBook(id).subscribe();
-    }
+  onSubmit(){
+    console.log(this.planPage)
   }
 
-  onPreUpdateBook(book: BookInterface): void {
-    this.dataApiService.selectedBook = Object.assign({}, book);
-  }
-
-  resetForm(bookForm?: NgForm): void {
-    this.dataApiService.selectedBook = {
-      id: null,
-      titulo: '',
-      idioma: '',
-      descripcion: '',
-      portada: '',
-      precio: '',
-      link_amazon: '',
-      autor: '',
-      oferta: ''
-    };
+  onSelect(page: number): void {
+    console.log("selected page : "+page);
+    this.selectedPage=page;
+    this.getPlanPage(page);
   }
 }

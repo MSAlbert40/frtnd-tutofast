@@ -5,36 +5,29 @@ import {Plan} from '../models/plan';
 import {catchError, map} from 'rxjs/operators';
 import {PlanPage} from '../models/plan-page';
 
+
+const API_URL = 'http://localhost:8080/api/plans';
+
 @Injectable({
   providedIn: 'root'
 })
 export class PlanService {
-
-  private url = 'http://localhost:8099/api/plans';
+  /*
+  getClient(): Observable<Plan[]>{
+    return this.http.get<Client[]>(this.url)
+      .pipe(
+        catchError(this.handleError('getClient', []))
+      );
+  }
+  */
 
   constructor(private http : HttpClient) { }
 
+  getPlanPage(page:number): Observable<any>{
 
-  getPlans(): Observable<Plan[]>{
-    return this.http.get<Plan[]>(this.url)
-      .pipe(
-        catchError(this.handleError('getPlans', []))
-      );
+    let url=API_URL+"?page="+page+"&size=7";
+    return this.http.get<any>(url);
   }
-
-  getPageClient(page:number): Observable<PlanPage>{
-    var url = this.url;
-    url=url+"?"+page + "&size=5";
-    return this.http.get<PlanPage>(url)
-      .pipe(
-        map(response => {
-          const data = response;
-          console.log(data.content);
-          return data ;
-        }));
-  }
-
-
 
   private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
@@ -49,4 +42,6 @@ export class PlanService {
       return of(result as T);
     };
   }
+
+
 }

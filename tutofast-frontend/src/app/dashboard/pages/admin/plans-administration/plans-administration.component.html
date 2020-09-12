@@ -1,66 +1,34 @@
 <div class="my-3">
   <h2>Plan Administration</h2>
 </div>
-<div class="my-2">
+<div class="my-2" (click)="onSubmit()">
   <button type="button" class="btn btn-dark">New Plan</button>
 
 </div>
 <table class="table">
   <thead class="thead-dark">
   <tr>
-    <th scope="col">Id</th>
+    <th scope="col">ID</th>
     <th scope="col">Tittle</th>
+    <th scope="col">Hour</th>
     <th scope="col">Price</th>
-    <th scope="col">For</th>
-    <th scope="col">Actions</th>
+    <th scope="col">Role</th>
   </tr>
   </thead>
-  <tbody>
-  <tr>
-    <th scope="row">1</th>
-    <td>Mark</td>
-    <td>Otto</td>
-    <td>@mdo</td>
-  </tr>
-  <tr>
-    <th scope="row">2</th>
-    <td>Jacob</td>
-    <td>Thornton</td>
-    <td>@fat</td>
-  </tr>
-  <tr>
-    <th scope="row">3</th>
-    <td>Larry</td>
-    <td>the Bird</td>
-    <td>@twitter</td>
-  </tr>
+  <tbody  *ngIf="planPage?.content">
+    <tr *ngFor="let plan of planPage.content">
+      <td>{{plan.id}}</td>
+      <td>{{plan.tittle}}</td>
+      <td>{{plan.hours}}</td>
+      <td>{{plan.price}}</td>
+      <td>{{plan.role}}</td>
+    </tr>
   </tbody>
 </table>
+<nav aria-label="...">
+  <ul style="margin-left: 180px;margin-top:-10px;" class="pagination"  *ngIf="planPage?.content" >
+    <li *ngFor="let page of ' '.repeat(planPage.totalPages).split(''), let i = index " (click)="onSelect(i)" [class.active]="i === selectedPage" class="page-item"><a class="page-link" href="#">{{i}}</a></li>
+  </ul>
+</nav>
 
-<div class="container">
-  <table mdbTable #tableEl="mdbTable" class="z-depth-1">
-    <thead>
-    <tr>
-      <th *ngFor="let head of headElements; let i = index" scope="col">{{head}}
-      </th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let el of elements; let i = index">
-      <th *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex"
-          scope="row">{{el.id}}</th>
-      <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">{{el.first}}</td>
-      <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">{{el.last}}</td>
-      <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">{{el.handle}}</td>
-    </tr>
-    </tbody>
-    <tfoot class="grey lighten-5 w-100">
-    <tr>
-      <td colspan="4">
-        <mdb-table-pagination [tableEl]="tableEl" [searchDataSource]="elements"></mdb-table-pagination>
-      </td>
-    </tr>
-    </tfoot>
-  </table>
-</div>
 
