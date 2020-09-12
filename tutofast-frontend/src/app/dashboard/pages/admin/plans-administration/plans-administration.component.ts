@@ -10,11 +10,11 @@ import {PlanPage} from '../../../models/plan-page';
   styleUrls: ['./plans-administration.component.css']
 })
 export class PlansAdministrationComponent implements OnInit {
-  clients : Plan[];
-  planPage : any ;
-  selectedPage : number = 0;
+  clients: Plan[];
+  planPage: PlanPage;
+  selectedPage: number = 0;
 
-  constructor(private planService : PlanService) {}
+  constructor(private planService: PlanService) {}
 
   ngOnInit() {
     //this.getClient();
@@ -24,19 +24,19 @@ export class PlansAdministrationComponent implements OnInit {
     //console.log(this.planPage.numberOfElements)
   }
 
-  getPlanPage (page:number): void {
+  getPlanPage(page:number): void {
     this.planService.getPlanPage(page)
-      .subscribe(page => this.planPage = page)
-
+      .subscribe(page => this.planPage = page);
   }
 
   onSubmit(){
-    console.log(this.planPage)
+    console.log(this.planPage);
   }
 
   onSelect(page: number): void {
     console.log("selected page : "+page);
     this.selectedPage=page;
     this.getPlanPage(page);
+    // window.location.reload();
   }
 }

@@ -27,7 +27,7 @@
 </table>
 <nav aria-label="...">
   <ul style="margin-left: 180px;margin-top:-10px;" class="pagination"  *ngIf="planPage?.content" >
-    <li *ngFor="let page of ' '.repeat(planPage.totalPages).split(''), let i = index " (click)="onSelect(i)" [class.active]="i === selectedPage" class="page-item"><a class="page-link" href="#">{{i}}</a></li>
+    <li *ngFor="let page of ' '.repeat(planPage.totalPages).split(''), let i = index " (click)="onSelect(i)" [class.active]="i === selectedPage" class="page-item"><a class="page-link">{{i}}</a></li>
   </ul>
 </nav>
 
