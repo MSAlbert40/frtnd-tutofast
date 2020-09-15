@@ -1,5 +1,23 @@
-<div class="container">
-  <header class="jumbotron">
-    <p>{{ content }}</p>
-  </header>
+<div class="my-3">
+  <h2>Search Teacher Ideal</h2>
 </div>
+<table class="table">
+  <thead class="thead-dark">
+  <tr>
+    <th scope="col">Teacher</th>
+    <th scope="col">Subject</th>
+    <th scope="col">Start Time</th>
+    <th scope="col">End Time</th>
+  </tr>
+  </thead>
+  <tbody  *ngIf="teacherPage?.content">
+  <tr *ngFor="let teacher of teacherPage.content">
+    <td>{{teacher.lastName}},{{teacher.name}}</td>
+  </tr>
+  </tbody>
+</table>
+<nav aria-label="...">
+  <ul style="margin-left: 180px;margin-top:-10px;" class="pagination"  *ngIf="teacherPage?.content" >
+    <li *ngFor="let page of ' '.repeat(teacherPage.totalPages).split(''), let i = index " (click)="onSelect(i)" [class.active]="i === selectedPage" class="page-item"><a class="page-link">{{i}}</a></li>
+  </ul>
+</nav>

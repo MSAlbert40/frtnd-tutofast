@@ -1,5 +1,24 @@
-<div class="container">
-  <header class="jumbotron">
-    <p>{{ content }}</p>
-  </header>
+<div class="my-3">
+  <h2>All Users</h2>
 </div>
+<table class="table">
+  <thead class="thead-dark">
+  <tr>
+    <th scope="col">ID</th>
+    <th scope="col">Username</th>
+    <th scope="col">Email</th>
+  </tr>
+  </thead>
+  <tbody  *ngIf="userPage?.content">
+  <tr *ngFor="let user of userPage.content">
+    <td>{{user.id}}</td>
+    <td>{{user.username}}</td>
+    <td>{{user.email}}</td>
+  </tr>
+  </tbody>
+</table>
+<nav aria-label="...">
+  <ul style="margin-left: 180px;margin-top:-10px;" class="pagination"  *ngIf="userPage?.content" >
+    <li *ngFor="let page of ' '.repeat(userPage.totalPages).split(''), let i = index " (click)="onSelect(i)" [class.active]="i === selectedPage" class="page-item"><a class="page-link">{{i}}</a></li>
+  </ul>
+</nav>

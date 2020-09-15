@@ -1,6 +1,11 @@
 export class RegisterData {
   username: string;
-  email: string;
   password: string;
-  role: string[];
+  email: string;
+  name: string;
+  lastName: string;
+  dni: string;
+  phone: string;
+  birthday: Date;
+  address: string;
 }

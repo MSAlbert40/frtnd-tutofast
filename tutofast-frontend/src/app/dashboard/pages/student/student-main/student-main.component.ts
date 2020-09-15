@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {TestService} from '../../../../security/services/test.service';
+import {UserService} from '../../../services/user.service';
+import {UserPage} from '../../../models/user';
 
 @Component({
   selector: 'app-student-main',
@@ -8,18 +10,21 @@ import {TestService} from '../../../../security/services/test.service';
 })
 export class StudentMainComponent implements OnInit {
 
-  content: string;
+  teacherPage: UserPage;
+  selectedPage = 0;
 
-  constructor(private testService: TestService) { }
+  constructor(private userService: UserService) { }
 
   ngOnInit(): void {
-    this.testService.getStudentContent().subscribe(
-      data => {
-        this.content = data;
-      },
-      err => {
-        this.content = JSON.parse(err.error).message;
-      }
-    );
+    this.ListTeachers(this.selectedPage);
+  }
+
+  ListTeachers(page: number): void{
+    this.userService.getUser(page).subscribe(page => this.teacherPage = page);
+  }
+
+  onSelect(page: number): void {
+    this.selectedPage = page;
+    this.ListTeachers(page);
   }
 }

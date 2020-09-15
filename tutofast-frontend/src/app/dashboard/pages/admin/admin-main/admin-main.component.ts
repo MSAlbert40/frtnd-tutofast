@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {TestService} from '../../../../security/services/test.service';
+import {UserService} from '../../../services/user.service';
+import {UserPage} from '../../../models/user';
 
 @Component({
   selector: 'app-admin-main',
@@ -8,18 +10,22 @@ import {TestService} from '../../../../security/services/test.service';
 })
 export class AdminMainComponent implements OnInit {
 
-  content: string;
+  userPage: UserPage;
+  selectedPage = 0;
 
-  constructor(private testService: TestService) { }
+  constructor(private userService: UserService) { }
 
   ngOnInit(): void {
-    this.testService.getAdminContent().subscribe(
-      data => {
-        this.content = data;
-      },
-      err => {
-        this.content = JSON.parse(err.error).message;
-      }
-    );
+    this.ListUser(this.selectedPage);
+  }
+
+  ListUser(page: number): void {
+    this.userService.getUser(page).subscribe(
+      page => this.userPage = page);
+  }
+
+  onSelect(page: number): void {
+    this.selectedPage = page;
+    this.ListUser(page);
   }
 }
